@@ -1,0 +1,2619 @@
+{
+  "schemaVersion": "1.0",
+  "edition": "planning-reset-2026-10-13",
+  "asOf": "2026-10-09",
+  "simulation": true,
+  "statement": "本文件仅复用原型已有的合成数据与经济假设，以统一策划、数据图和产品讲解口径；没有生成新经营事实、访谈或收益证据。",
+  "sourceFiles": [
+    {
+      "path": "outputs/niudian-zhice/data/demo.json",
+      "sha256": "22a54d19d619e9f29872eb2b6415485053bc4fa4ff88ceab57b21cccc1b0e954"
+    },
+    {
+      "path": "outputs/niudian-zhice/app/engine.mjs",
+      "sha256": "e1398eb2b6739cd86ae315b0b27699add53688380c93b40a51bcd2a407692392"
+    },
+    {
+      "path": "outputs/niudian-zhice/data/企业价值假设.json",
+      "sha256": "b6744ed3b9af252af3424b640657c39f80353662bb953099860360c02ae62278"
+    }
+  ],
+  "datasetScope": {
+    "storeCount": 30,
+    "skuCount": 3,
+    "salesRows": 5040,
+    "salesFirstDate": "2026-08-15",
+    "salesDays": 56,
+    "allSkuUnits": [
+      "盒"
+    ]
+  },
+  "riskDistribution": {
+    "unit": "店",
+    "timeWindow": {
+      "asOf": "2026-10-09",
+      "sales": "2026-09-26—2026-10-09",
+      "inventory": "截至 2026-10-09 的库存快照",
+      "notes": "分析日前 7 天内的有效走访线索"
+    },
+    "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "stores 全部 30 店，及对应 sales / inventory / notes",
+        "calculation": "对 analyzeDataset(...).allStores 按 riskLevel 分组计数；高 ≥60，中 ≥25 且 <60，低 <25",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      }
+    ],
+    "total": 30,
+    "levels": [
+      {
+        "level": "高",
+        "count": 2,
+        "percent": 6.67
+      },
+      {
+        "level": "中",
+        "count": 3,
+        "percent": 10
+      },
+      {
+        "level": "低",
+        "count": 25,
+        "percent": 83.33
+      }
+    ],
+    "storesWithSignals": 7,
+    "storesWithoutDetectedSignals": 23,
+    "lowPriorityWithSignals": [
+      "S025",
+      "S017"
+    ],
+    "caution": "等级描述的是规则优先级；低优先级不代表无业务问题，分布不能证明风险检出率或经营改善。"
+  },
+  "all30Priorities": [
+    {
+      "rank": 1,
+      "storeId": "S030",
+      "storeName": "大学城·示意门店30",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 70,
+      "riskLevel": "高",
+      "riskCodes": [
+        "expired"
+      ],
+      "riskLabels": [
+        "过期批次待隔离"
+      ]
+    },
+    {
+      "rank": 2,
+      "storeId": "S021",
+      "storeName": "大学城·示意门店21",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 64,
+      "riskLevel": "高",
+      "riskCodes": [
+        "stockout",
+        "sales_anomaly",
+        "expiry"
+      ],
+      "riskLabels": [
+        "库存覆盖不足",
+        "销量下降待核查",
+        "临期批次待处理"
+      ]
+    },
+    {
+      "rank": 3,
+      "storeId": "S006",
+      "storeName": "大学城·示意门店06",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 50,
+      "riskLevel": "中",
+      "riskCodes": [
+        "sales_anomaly",
+        "shelf_gap"
+      ],
+      "riskLabels": [
+        "销量下降待核查",
+        "陈列与仓库待核查"
+      ]
+    },
+    {
+      "rank": 4,
+      "storeId": "S028",
+      "storeName": "东校区·示意门店28",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 40,
+      "riskLevel": "中",
+      "riskCodes": [
+        "sales_anomaly",
+        "note_conflict"
+      ],
+      "riskLabels": [
+        "销量下降待核查",
+        "走访信息冲突"
+      ]
+    },
+    {
+      "rank": 5,
+      "storeId": "S014",
+      "storeName": "西校区·示意门店14",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 34,
+      "riskLevel": "中",
+      "riskCodes": [
+        "expiry"
+      ],
+      "riskLabels": [
+        "临期批次待处理"
+      ]
+    },
+    {
+      "rank": 6,
+      "storeId": "S025",
+      "storeName": "东校区·示意门店25",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 18,
+      "riskLevel": "低",
+      "riskCodes": [
+        "sales_anomaly"
+      ],
+      "riskLabels": [
+        "销量上升待核查"
+      ]
+    },
+    {
+      "rank": 7,
+      "storeId": "S017",
+      "storeName": "西校区·示意门店17",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 14,
+      "riskLevel": "低",
+      "riskCodes": [
+        "price_check"
+      ],
+      "riskLabels": [
+        "价签待核查"
+      ]
+    },
+    {
+      "rank": 8,
+      "storeId": "S001",
+      "storeName": "东校区·示意门店01",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 9,
+      "storeId": "S002",
+      "storeName": "西校区·示意门店02",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 10,
+      "storeId": "S003",
+      "storeName": "大学城·示意门店03",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 11,
+      "storeId": "S004",
+      "storeName": "东校区·示意门店04",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 12,
+      "storeId": "S005",
+      "storeName": "西校区·示意门店05",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 13,
+      "storeId": "S007",
+      "storeName": "东校区·示意门店07",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 14,
+      "storeId": "S008",
+      "storeName": "西校区·示意门店08",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 15,
+      "storeId": "S009",
+      "storeName": "大学城·示意门店09",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 16,
+      "storeId": "S010",
+      "storeName": "东校区·示意门店10",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 17,
+      "storeId": "S011",
+      "storeName": "西校区·示意门店11",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 18,
+      "storeId": "S012",
+      "storeName": "大学城·示意门店12",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 19,
+      "storeId": "S013",
+      "storeName": "东校区·示意门店13",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 20,
+      "storeId": "S015",
+      "storeName": "大学城·示意门店15",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 21,
+      "storeId": "S016",
+      "storeName": "东校区·示意门店16",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 22,
+      "storeId": "S018",
+      "storeName": "大学城·示意门店18",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 23,
+      "storeId": "S019",
+      "storeName": "东校区·示意门店19",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 24,
+      "storeId": "S020",
+      "storeName": "西校区·示意门店20",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 25,
+      "storeId": "S022",
+      "storeName": "东校区·示意门店22",
+      "district": "东校区",
+      "channel": "便利店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 26,
+      "storeId": "S023",
+      "storeName": "西校区·示意门店23",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 27,
+      "storeId": "S024",
+      "storeName": "大学城·示意门店24",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 28,
+      "storeId": "S026",
+      "storeName": "西校区·示意门店26",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 29,
+      "storeId": "S027",
+      "storeName": "大学城·示意门店27",
+      "district": "大学城",
+      "channel": "社区店",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    },
+    {
+      "rank": 30,
+      "storeId": "S029",
+      "storeName": "西校区·示意门店29",
+      "district": "西校区",
+      "channel": "校园商超",
+      "priority": 0,
+      "riskLevel": "低",
+      "riskCodes": [],
+      "riskLabels": []
+    }
+  ],
+  "top5": {
+    "unit": "优先分 /100；名额为店",
+    "timeWindow": {
+      "asOf": "2026-10-09"
+    },
+    "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "analyzeDataset(dataset, {limit: 5}).stores",
+        "calculation": "不同风险代码的最大权重 + 8×(风险代码数量−1)，封顶 100；降序排列，同分按门店 ID 升序",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      }
+    ],
+    "requestedVisitSlots": 5,
+    "requestedVisitSlotsLabel": "演示拜访名额假设，非现行企业标准",
+    "scoreMeaning": "待核查事项的规则优先分，不是 AI 准确率、问题发生概率或收益概率",
+    "weights": {
+      "expired": 70,
+      "stockout": 48,
+      "shelf_gap": 42,
+      "expiry": 34,
+      "note_conflict": 32,
+      "data_quality": 25,
+      "sales_anomaly": 18,
+      "zero_sales": 16,
+      "price_check": 14
+    },
+    "levels": {
+      "high": "≥60",
+      "medium": "≥25 且 <60",
+      "low": "<25"
+    },
+    "items": [
+      {
+        "rank": 1,
+        "storeId": "S030",
+        "storeName": "大学城·示意门店30",
+        "priority": 70,
+        "riskLevel": "高",
+        "distinctRiskCodes": [
+          "expired"
+        ],
+        "riskLabels": [
+          "过期批次待隔离"
+        ],
+        "risks": [
+          {
+            "code": "expired",
+            "label": "过期批次待隔离",
+            "severity": 5,
+            "skuId": "TL-C250",
+            "evidenceIds": [
+              "S030-E5",
+              "S030-E3"
+            ]
+          }
+        ],
+        "firstStep": "核查并隔离过期批次",
+        "actions": [
+          {
+            "title": "核查并隔离过期批次",
+            "code": "expired",
+            "skuId": "TL-C250",
+            "reason": "按门店流程核对实物与批次；未经确认不进入可售库存。",
+            "evidenceIds": [
+              "S030-E5",
+              "S030-E3"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "S030-E1",
+            "label": "补货提前期",
+            "value": "3 天",
+            "source": "stores[29].leadTimeDays / 门店参数",
+            "skuId": null
+          },
+          {
+            "id": "S030-E2",
+            "label": "特仑苏纯牛奶（示意SKU） 可售库存",
+            "value": "56 盒",
+            "source": "inventory[87].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S030-E3",
+            "label": "特仑苏纯牛奶（示意SKU） 批次明细",
+            "value": "S030-TL-C250-B01：56 盒，到期 2027-02-09；S030-TL-C250-B00：24 盒，到期 2026-10-08",
+            "source": "inventory[87].batches / 库存快照 2026-10-09",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S030-E4",
+            "label": "特仑苏纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "10 盒/天",
+            "source": "sales[storeId=S030,skuId=TL-C250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S030-E5",
+            "label": "特仑苏纯牛奶（示意SKU） 已过期批次数量",
+            "value": "24 盒",
+            "source": "按 expiresAt 早于分析日计算；不计入可售库存",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S030-E6",
+            "label": "特仑苏有机纯牛奶（示意SKU） 可售库存",
+            "value": "77 盒",
+            "source": "inventory[88].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S030-E7",
+            "label": "特仑苏有机纯牛奶（示意SKU） 批次明细",
+            "value": "S030-TL-O250-B01：77 盒，到期 2027-02-12",
+            "source": "inventory[88].batches / 库存快照 2026-10-09",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S030-E8",
+            "label": "特仑苏有机纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "13.86 盒/天",
+            "source": "sales[storeId=S030,skuId=TL-O250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S030-E9",
+            "label": "纯甄常温酸牛奶（示意SKU） 可售库存",
+            "value": "85 盒",
+            "source": "inventory[89].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S030-E10",
+            "label": "纯甄常温酸牛奶（示意SKU） 批次明细",
+            "value": "S030-CZ-Y200-B01：85 盒，到期 2027-02-15",
+            "source": "inventory[89].batches / 库存快照 2026-10-09",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S030-E11",
+            "label": "纯甄常温酸牛奶（示意SKU） 最近7天日均销量",
+            "value": "15.71 盒/天",
+            "source": "sales[storeId=S030,skuId=CZ-Y200,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "CZ-Y200"
+          }
+        ]
+      },
+      {
+        "rank": 2,
+        "storeId": "S021",
+        "storeName": "大学城·示意门店21",
+        "priority": 64,
+        "riskLevel": "高",
+        "distinctRiskCodes": [
+          "stockout",
+          "sales_anomaly",
+          "expiry"
+        ],
+        "riskLabels": [
+          "库存覆盖不足",
+          "销量下降待核查",
+          "临期批次待处理"
+        ],
+        "risks": [
+          {
+            "code": "stockout",
+            "label": "库存覆盖不足",
+            "severity": 4,
+            "skuId": "TL-C250",
+            "evidenceIds": [
+              "S021-E5",
+              "S021-E1",
+              "S021-E2",
+              "S021-E4"
+            ]
+          },
+          {
+            "code": "sales_anomaly",
+            "label": "销量下降待核查",
+            "severity": 2,
+            "skuId": "TL-C250",
+            "evidenceIds": [
+              "S021-E6",
+              "S021-E4"
+            ]
+          },
+          {
+            "code": "expiry",
+            "label": "临期批次待处理",
+            "severity": 3,
+            "skuId": "TL-O250",
+            "evidenceIds": [
+              "S021-E10",
+              "S021-E8"
+            ]
+          }
+        ],
+        "firstStep": "核对可售库存与在途订单",
+        "actions": [
+          {
+            "title": "核对可售库存与在途订单",
+            "code": "stockout",
+            "skuId": "TL-C250",
+            "reason": "库存覆盖天数低于补货提前期；盘点、查在途后再由业务人员确认补货。",
+            "evidenceIds": [
+              "S021-E5",
+              "S021-E1",
+              "S021-E2",
+              "S021-E4"
+            ]
+          },
+          {
+            "title": "核查销量变化原因",
+            "code": "sales_anomaly",
+            "skuId": "TL-C250",
+            "reason": "检查上架、价格、活动及销售录入；此信号不能证明变化原因。",
+            "evidenceIds": [
+              "S021-E6",
+              "S021-E4"
+            ]
+          },
+          {
+            "title": "优先核查临期批次",
+            "code": "expiry",
+            "skuId": "TL-O250",
+            "reason": "核对批次标签与可售状态，按门店规则确认先到期先出及处理方式。",
+            "evidenceIds": [
+              "S021-E10",
+              "S021-E8"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "S021-E1",
+            "label": "补货提前期",
+            "value": "3 天",
+            "source": "stores[20].leadTimeDays / 门店参数",
+            "skuId": null
+          },
+          {
+            "id": "S021-E2",
+            "label": "特仑苏纯牛奶（示意SKU） 可售库存",
+            "value": "8 盒",
+            "source": "inventory[60].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S021-E3",
+            "label": "特仑苏纯牛奶（示意SKU） 批次明细",
+            "value": "S021-TL-C250-B01：8 盒，到期 2026-12-08",
+            "source": "inventory[60].batches / 库存快照 2026-10-09",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S021-E4",
+            "label": "特仑苏纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "10.43 盒/天",
+            "source": "sales[storeId=S021,skuId=TL-C250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S021-E5",
+            "label": "特仑苏纯牛奶（示意SKU） 库存覆盖天数",
+            "value": "0.77 天",
+            "source": "可售库存 ÷ 最近7天日均销量；未预测未来需求",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S021-E6",
+            "label": "特仑苏纯牛奶（示意SKU） 周销量变化",
+            "value": "-48.59%",
+            "source": "最近7天日均 / 前7天日均 - 1；非因果结论",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S021-E7",
+            "label": "特仑苏有机纯牛奶（示意SKU） 可售库存",
+            "value": "215 盒",
+            "source": "inventory[61].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S021-E8",
+            "label": "特仑苏有机纯牛奶（示意SKU） 批次明细",
+            "value": "S021-TL-O250-B01：143 盒，到期 2026-12-11；S021-TL-O250-B02：72 盒，到期 2026-10-21",
+            "source": "inventory[61].batches / 库存快照 2026-10-09",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S021-E9",
+            "label": "特仑苏有机纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "24 盒/天",
+            "source": "sales[storeId=S021,skuId=TL-O250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S021-E10",
+            "label": "特仑苏有机纯牛奶（示意SKU） 14天内到期数量",
+            "value": "72 盒",
+            "source": "到期日距分析日0–14天的批次合计；阈值为演示假设",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S021-E11",
+            "label": "纯甄常温酸牛奶（示意SKU） 可售库存",
+            "value": "181 盒",
+            "source": "inventory[62].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S021-E12",
+            "label": "纯甄常温酸牛奶（示意SKU） 批次明细",
+            "value": "S021-CZ-Y200-B01：181 盒，到期 2026-12-14",
+            "source": "inventory[62].batches / 库存快照 2026-10-09",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S021-E13",
+            "label": "纯甄常温酸牛奶（示意SKU） 最近7天日均销量",
+            "value": "27.43 盒/天",
+            "source": "sales[storeId=S021,skuId=CZ-Y200,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S021-E14",
+            "label": "走访原文",
+            "value": "最近一周有多次缺货反馈，在途订单尚未确认。",
+            "source": "notes[2].text / 走访记录 2026-10-09 / N021",
+            "skuId": "TL-C250"
+          }
+        ]
+      },
+      {
+        "rank": 3,
+        "storeId": "S006",
+        "storeName": "大学城·示意门店06",
+        "priority": 50,
+        "riskLevel": "中",
+        "distinctRiskCodes": [
+          "sales_anomaly",
+          "shelf_gap"
+        ],
+        "riskLabels": [
+          "销量下降待核查",
+          "陈列与仓库待核查"
+        ],
+        "risks": [
+          {
+            "code": "sales_anomaly",
+            "label": "销量下降待核查",
+            "severity": 2,
+            "skuId": "TL-C250",
+            "evidenceIds": [
+              "S006-E5",
+              "S006-E4"
+            ]
+          },
+          {
+            "code": "shelf_gap",
+            "label": "陈列与仓库待核查",
+            "severity": 4,
+            "skuId": "TL-C250",
+            "evidenceIds": [
+              "S006-E12"
+            ]
+          }
+        ],
+        "firstStep": "先检查上架与仓库实物",
+        "actions": [
+          {
+            "title": "核查销量变化原因",
+            "code": "sales_anomaly",
+            "skuId": "TL-C250",
+            "reason": "检查上架、价格、活动及销售录入；此信号不能证明变化原因。",
+            "evidenceIds": [
+              "S006-E5",
+              "S006-E4"
+            ]
+          },
+          {
+            "title": "先检查上架与仓库实物",
+            "code": "shelf_gap",
+            "skuId": "TL-C250",
+            "reason": "近期有效走访线索提到货架缺货与仓库有货；先核查上架情况，不直接认定需要补货。",
+            "evidenceIds": [
+              "S006-E12"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "S006-E1",
+            "label": "补货提前期",
+            "value": "3 天",
+            "source": "stores[5].leadTimeDays / 门店参数",
+            "skuId": null
+          },
+          {
+            "id": "S006-E2",
+            "label": "特仑苏纯牛奶（示意SKU） 可售库存",
+            "value": "51 盒",
+            "source": "inventory[15].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S006-E3",
+            "label": "特仑苏纯牛奶（示意SKU） 批次明细",
+            "value": "S006-TL-C250-B01：51 盒，到期 2027-01-12",
+            "source": "inventory[15].batches / 库存快照 2026-10-09",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S006-E4",
+            "label": "特仑苏纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "9.14 盒/天",
+            "source": "sales[storeId=S006,skuId=TL-C250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S006-E5",
+            "label": "特仑苏纯牛奶（示意SKU） 周销量变化",
+            "value": "-51.52%",
+            "source": "最近7天日均 / 前7天日均 - 1；非因果结论",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S006-E6",
+            "label": "特仑苏有机纯牛奶（示意SKU） 可售库存",
+            "value": "134 盒",
+            "source": "inventory[16].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S006-E7",
+            "label": "特仑苏有机纯牛奶（示意SKU） 批次明细",
+            "value": "S006-TL-O250-B01：134 盒，到期 2027-01-15",
+            "source": "inventory[16].batches / 库存快照 2026-10-09",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S006-E8",
+            "label": "特仑苏有机纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "20.86 盒/天",
+            "source": "sales[storeId=S006,skuId=TL-O250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S006-E9",
+            "label": "纯甄常温酸牛奶（示意SKU） 可售库存",
+            "value": "148 盒",
+            "source": "inventory[17].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S006-E10",
+            "label": "纯甄常温酸牛奶（示意SKU） 批次明细",
+            "value": "S006-CZ-Y200-B01：148 盒，到期 2027-01-18",
+            "source": "inventory[17].batches / 库存快照 2026-10-09",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S006-E11",
+            "label": "纯甄常温酸牛奶（示意SKU） 最近7天日均销量",
+            "value": "24.43 盒/天",
+            "source": "sales[storeId=S006,skuId=CZ-Y200,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S006-E12",
+            "label": "走访原文",
+            "value": "货架缺货，仓库仍有库存。请现场核查货架与仓库实物，先确认是否未上架。",
+            "source": "notes[0].text / 走访记录 2026-10-09 / N006",
+            "skuId": "TL-C250"
+          }
+        ]
+      },
+      {
+        "rank": 4,
+        "storeId": "S028",
+        "storeName": "东校区·示意门店28",
+        "priority": 40,
+        "riskLevel": "中",
+        "distinctRiskCodes": [
+          "sales_anomaly",
+          "note_conflict"
+        ],
+        "riskLabels": [
+          "销量下降待核查",
+          "走访信息冲突"
+        ],
+        "risks": [
+          {
+            "code": "sales_anomaly",
+            "label": "销量下降待核查",
+            "severity": 2,
+            "skuId": "TL-C250",
+            "evidenceIds": [
+              "S028-E5",
+              "S028-E4"
+            ]
+          },
+          {
+            "code": "note_conflict",
+            "label": "走访信息冲突",
+            "severity": 3,
+            "skuId": "TL-C250",
+            "evidenceIds": [
+              "S028-E12"
+            ]
+          }
+        ],
+        "firstStep": "复核相互冲突的信息",
+        "actions": [
+          {
+            "title": "核查销量变化原因",
+            "code": "sales_anomaly",
+            "skuId": "TL-C250",
+            "reason": "检查上架、价格、活动及销售录入；此信号不能证明变化原因。",
+            "evidenceIds": [
+              "S028-E5",
+              "S028-E4"
+            ]
+          },
+          {
+            "title": "复核相互冲突的信息",
+            "code": "note_conflict",
+            "skuId": "TL-C250",
+            "reason": "同日相反记录缺少可靠先后信息，或原文明确指出冲突；以实物盘点和最新有效记录核查。",
+            "evidenceIds": [
+              "S028-E12"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "S028-E1",
+            "label": "补货提前期",
+            "value": "3 天",
+            "source": "stores[27].leadTimeDays / 门店参数",
+            "skuId": null
+          },
+          {
+            "id": "S028-E2",
+            "label": "特仑苏纯牛奶（示意SKU） 可售库存",
+            "value": "63 盒",
+            "source": "inventory[81].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S028-E3",
+            "label": "特仑苏纯牛奶（示意SKU） 批次明细",
+            "value": "S028-TL-C250-B01：63 盒，到期 2027-01-26",
+            "source": "inventory[81].batches / 库存快照 2026-10-09",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S028-E4",
+            "label": "特仑苏纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "10.43 盒/天",
+            "source": "sales[storeId=S028,skuId=TL-C250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S028-E5",
+            "label": "特仑苏纯牛奶（示意SKU） 周销量变化",
+            "value": "-46.72%",
+            "source": "最近7天日均 / 前7天日均 - 1；非因果结论",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S028-E6",
+            "label": "特仑苏有机纯牛奶（示意SKU） 可售库存",
+            "value": "127 盒",
+            "source": "inventory[82].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S028-E7",
+            "label": "特仑苏有机纯牛奶（示意SKU） 批次明细",
+            "value": "S028-TL-O250-B01：127 盒，到期 2027-01-29",
+            "source": "inventory[82].batches / 库存快照 2026-10-09",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S028-E8",
+            "label": "特仑苏有机纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "23.14 盒/天",
+            "source": "sales[storeId=S028,skuId=TL-O250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S028-E9",
+            "label": "纯甄常温酸牛奶（示意SKU） 可售库存",
+            "value": "141 盒",
+            "source": "inventory[83].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S028-E10",
+            "label": "纯甄常温酸牛奶（示意SKU） 批次明细",
+            "value": "S028-CZ-Y200-B01：141 盒，到期 2027-02-01",
+            "source": "inventory[83].batches / 库存快照 2026-10-09",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S028-E11",
+            "label": "纯甄常温酸牛奶（示意SKU） 最近7天日均销量",
+            "value": "27.57 盒/天",
+            "source": "sales[storeId=S028,skuId=CZ-Y200,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S028-E12",
+            "label": "走访原文",
+            "value": "店员说仓库有货，上一条记录写仓库无货，两条说法矛盾，请盘点。",
+            "source": "notes[3].text / 走访记录 2026-10-09 / N028",
+            "skuId": "TL-C250"
+          }
+        ]
+      },
+      {
+        "rank": 5,
+        "storeId": "S014",
+        "storeName": "西校区·示意门店14",
+        "priority": 34,
+        "riskLevel": "中",
+        "distinctRiskCodes": [
+          "expiry"
+        ],
+        "riskLabels": [
+          "临期批次待处理"
+        ],
+        "risks": [
+          {
+            "code": "expiry",
+            "label": "临期批次待处理",
+            "severity": 3,
+            "skuId": "CZ-Y200",
+            "evidenceIds": [
+              "S014-E11",
+              "S014-E9"
+            ]
+          }
+        ],
+        "firstStep": "优先核查临期批次",
+        "actions": [
+          {
+            "title": "优先核查临期批次",
+            "code": "expiry",
+            "skuId": "CZ-Y200",
+            "reason": "核对批次标签与可售状态，按门店规则确认先到期先出及处理方式。",
+            "evidenceIds": [
+              "S014-E11",
+              "S014-E9"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "S014-E1",
+            "label": "补货提前期",
+            "value": "3 天",
+            "source": "stores[13].leadTimeDays / 门店参数",
+            "skuId": null
+          },
+          {
+            "id": "S014-E2",
+            "label": "特仑苏纯牛奶（示意SKU） 可售库存",
+            "value": "135 盒",
+            "source": "inventory[39].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S014-E3",
+            "label": "特仑苏纯牛奶（示意SKU） 批次明细",
+            "value": "S014-TL-C250-B01：135 盒，到期 2026-12-29",
+            "source": "inventory[39].batches / 库存快照 2026-10-09",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S014-E4",
+            "label": "特仑苏纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "21.43 盒/天",
+            "source": "sales[storeId=S014,skuId=TL-C250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-C250"
+          },
+          {
+            "id": "S014-E5",
+            "label": "特仑苏有机纯牛奶（示意SKU） 可售库存",
+            "value": "142 盒",
+            "source": "inventory[40].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S014-E6",
+            "label": "特仑苏有机纯牛奶（示意SKU） 批次明细",
+            "value": "S014-TL-O250-B01：142 盒，到期 2027-01-01",
+            "source": "inventory[40].batches / 库存快照 2026-10-09",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S014-E7",
+            "label": "特仑苏有机纯牛奶（示意SKU） 最近7天日均销量",
+            "value": "22.71 盒/天",
+            "source": "sales[storeId=S014,skuId=TL-O250,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "TL-O250"
+          },
+          {
+            "id": "S014-E8",
+            "label": "纯甄常温酸牛奶（示意SKU） 可售库存",
+            "value": "449 盒",
+            "source": "inventory[41].batches / 库存快照 2026-10-09；到期日不早于分析日的批次合计",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S014-E9",
+            "label": "纯甄常温酸牛奶（示意SKU） 批次明细",
+            "value": "S014-CZ-Y200-B01：142 盒，到期 2027-01-04；S014-CZ-Y200-B02：307 盒，到期 2026-10-15",
+            "source": "inventory[41].batches / 库存快照 2026-10-09",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S014-E10",
+            "label": "纯甄常温酸牛奶（示意SKU） 最近7天日均销量",
+            "value": "25.57 盒/天",
+            "source": "sales[storeId=S014,skuId=CZ-Y200,date=2026-10-03..2026-10-09] / 销售记录",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S014-E11",
+            "label": "纯甄常温酸牛奶（示意SKU） 14天内到期数量",
+            "value": "307 盒",
+            "source": "到期日距分析日0–14天的批次合计；阈值为演示假设",
+            "skuId": "CZ-Y200"
+          },
+          {
+            "id": "S014-E12",
+            "label": "走访原文",
+            "value": "店员反馈部分批次到期临近，具体标签和可售状态需要复核。",
+            "source": "notes[1].text / 走访记录 2026-10-09 / N014",
+            "skuId": "CZ-Y200"
+          }
+        ]
+      }
+    ]
+  },
+  "s006Sales": {
+    "unit": "盒/日；均值为盒/日；变化率为 %",
+    "timeWindow": {
+      "start": "2026-09-26",
+      "end": "2026-10-09",
+      "previous7": {
+        "start": "2026-09-26",
+        "end": "2026-10-02"
+      },
+      "recent7": {
+        "start": "2026-10-03",
+        "end": "2026-10-09"
+      }
+    },
+    "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "sales[storeId=S006,skuId=TL-C250,date=2026-09-26..2026-10-09]",
+        "calculation": "前 7 天与后 7 天分别合计÷7；变化率 = (后 7 天日均÷前 7 天日均−1)×100",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      },
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "notes[storeId=S006,skuId=TL-C250]",
+        "calculation": "走访原文仅作待核实线索，不用于直接推断销量下降原因",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      }
+    ],
+    "storeId": "S006",
+    "storeName": "大学城·示意门店06",
+    "skuId": "TL-C250",
+    "skuName": "特仑苏纯牛奶（示意SKU）",
+    "skuUnit": "盒",
+    "daily": [
+      {
+        "date": "2026-09-26",
+        "units": 18,
+        "period": "前 7 天"
+      },
+      {
+        "date": "2026-09-27",
+        "units": 22,
+        "period": "前 7 天"
+      },
+      {
+        "date": "2026-09-28",
+        "units": 20,
+        "period": "前 7 天"
+      },
+      {
+        "date": "2026-09-29",
+        "units": 17,
+        "period": "前 7 天"
+      },
+      {
+        "date": "2026-09-30",
+        "units": 16,
+        "period": "前 7 天"
+      },
+      {
+        "date": "2026-10-01",
+        "units": 20,
+        "period": "前 7 天"
+      },
+      {
+        "date": "2026-10-02",
+        "units": 19,
+        "period": "前 7 天"
+      },
+      {
+        "date": "2026-10-03",
+        "units": 9,
+        "period": "最近 7 天"
+      },
+      {
+        "date": "2026-10-04",
+        "units": 10,
+        "period": "最近 7 天"
+      },
+      {
+        "date": "2026-10-05",
+        "units": 9,
+        "period": "最近 7 天"
+      },
+      {
+        "date": "2026-10-06",
+        "units": 8,
+        "period": "最近 7 天"
+      },
+      {
+        "date": "2026-10-07",
+        "units": 10,
+        "period": "最近 7 天"
+      },
+      {
+        "date": "2026-10-08",
+        "units": 9,
+        "period": "最近 7 天"
+      },
+      {
+        "date": "2026-10-09",
+        "units": 9,
+        "period": "最近 7 天"
+      }
+    ],
+    "previous7": {
+      "sumUnits": 132,
+      "averageUnitsPerDay": 18.86,
+      "averageUnitsPerDayExact": 18.857142857142858
+    },
+    "recent7": {
+      "sumUnits": 64,
+      "averageUnitsPerDay": 9.14,
+      "averageUnitsPerDayExact": 9.142857142857142
+    },
+    "changePct": -51.52,
+    "declineSignalThresholdPct": -25,
+    "availableStockUnits": 51,
+    "coverDays": 5.58,
+    "leadTimeDays": 3,
+    "noteOriginals": [
+      {
+        "id": "N006",
+        "storeId": "S006",
+        "skuId": "TL-C250",
+        "date": "2026-10-09",
+        "text": "货架缺货，仓库仍有库存。请现场核查货架与仓库实物，先确认是否未上架。",
+        "factLabel": "模拟走访原文，未完成现场核实"
+      }
+    ],
+    "suggestedFirstAction": "分别检查货架与仓库实物，确认是否尚未上架，同时核对价签、活动与销售录入。",
+    "caution": "只可表述“销量下降且走访记录提示货架缺货、仓库有库存”；不能表述“未上架造成下降”或“补货能恢复销量”。"
+  },
+  "s021Stock": {
+    "unit": {
+      "inventory": "盒",
+      "sales": "盒/日",
+      "cover": "天",
+      "leadTime": "天"
+    },
+    "timeWindow": {
+      "asOf": "2026-10-09",
+      "inventoryUpdatedAt": "2026-10-09",
+      "recentSalesStart": "2026-10-03",
+      "recentSalesEnd": "2026-10-09"
+    },
+    "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "inventory[storeId=S021,skuId=TL-C250].batches",
+        "calculation": "可售库存 = expiresAt≥分析日的批次数量合计；过期库存排除",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      },
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "sales[storeId=S021,skuId=TL-C250,date=2026-10-03..2026-10-09]",
+        "calculation": "日均销量 = 最近 7 天销量合计÷7；覆盖天数 = 可售库存÷未四舍五入日均销量",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      },
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "stores[id=S021].leadTimeDays",
+        "calculation": "覆盖天数低于门店补货提前期触发 stockout；不是预测未来缺货日期",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      }
+    ],
+    "storeId": "S021",
+    "storeName": "大学城·示意门店21",
+    "skuId": "TL-C250",
+    "skuName": "特仑苏纯牛奶（示意SKU）",
+    "skuUnit": "盒",
+    "availableUnits": 8,
+    "expiredUnitsExcluded": 0,
+    "recent7SalesUnits": 73,
+    "dailySalesUnits": 10.43,
+    "dailySalesUnitsExact": 10.428571428571429,
+    "coverDays": 0.77,
+    "coverDaysExact": 0.7671232876712328,
+    "leadTimeDays": 3,
+    "gapDays": 2.23,
+    "trigger": "库存覆盖天数 < 补货提前期",
+    "daily": [
+      {
+        "date": "2026-10-03",
+        "units": 10
+      },
+      {
+        "date": "2026-10-04",
+        "units": 11
+      },
+      {
+        "date": "2026-10-05",
+        "units": 11
+      },
+      {
+        "date": "2026-10-06",
+        "units": 10
+      },
+      {
+        "date": "2026-10-07",
+        "units": 11
+      },
+      {
+        "date": "2026-10-08",
+        "units": 11
+      },
+      {
+        "date": "2026-10-09",
+        "units": 9
+      }
+    ],
+    "batches": [
+      {
+        "id": "S021-TL-C250-B01",
+        "producedAt": "2026-06-11",
+        "expiresAt": "2026-12-08",
+        "units": 8
+      }
+    ],
+    "inventoryFresh": true,
+    "salesComplete": true,
+    "noteOriginals": [
+      {
+        "id": "N021",
+        "storeId": "S021",
+        "skuId": "TL-C250",
+        "date": "2026-10-09",
+        "text": "最近一周有多次缺货反馈，在途订单尚未确认。"
+      }
+    ],
+    "suggestedFirstAction": "盘点货架与仓库可售库存，查验在途订单和到货日期，再由业务人员确认补货。",
+    "caution": "0.77 天是存销比计算，非未来需求预测；不输出自动补货量，不把门店全部 SKU 库存混作该 SKU 库存。"
+  },
+  "s014Expiry": {
+    "unit": {
+      "inventory": "盒",
+      "batchCount": "批",
+      "share": "%",
+      "expiry": "YYYY-MM-DD"
+    },
+    "timeWindow": {
+      "asOf": "2026-10-09",
+      "inventoryUpdatedAt": "2026-10-09"
+    },
+    "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "inventory[storeId=S014,skuId=CZ-Y200].batches",
+        "calculation": "仅该 SKU 分批合计；临期为到期日距分析日 0–14 天且数量>0；过期 excludes expiresAt<分析日；临期占比 = 临期数量÷可售库存",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      }
+    ],
+    "storeId": "S014",
+    "storeName": "西校区·示意门店14",
+    "skuId": "CZ-Y200",
+    "skuName": "纯甄常温酸牛奶（示意SKU）",
+    "skuUnit": "盒",
+    "nearExpiryThresholdDays": 14,
+    "totalRecordedUnits": 449,
+    "totalInventoryUnits": 449,
+    "availableUnits": 449,
+    "nearExpiryUnits": 307,
+    "expiredUnits": 0,
+    "normalUnits": 142,
+    "nonNearExpiryAvailableUnits": 142,
+    "nearExpirySharePct": 68.37,
+    "nearExpiryPercent": 68.37,
+    "normalSharePct": 31.63,
+    "quantities": [
+      {
+        "status": "临期",
+        "units": 307,
+        "batchCount": 1
+      },
+      {
+        "status": "正常",
+        "units": 142,
+        "batchCount": 1
+      },
+      {
+        "status": "过期",
+        "units": 0,
+        "batchCount": 0
+      }
+    ],
+    "batches": [
+      {
+        "id": "S014-CZ-Y200-B01",
+        "producedAt": "2026-08-07",
+        "expiresAt": "2027-01-04",
+        "units": 142,
+        "status": "正常",
+        "daysToExpiry": 87,
+        "unit": "盒"
+      },
+      {
+        "id": "S014-CZ-Y200-B02",
+        "producedAt": "2026-05-18",
+        "expiresAt": "2026-10-15",
+        "units": 307,
+        "status": "临期",
+        "daysToExpiry": 6,
+        "unit": "盒"
+      }
+    ],
+    "nearExpiryBatches": [
+      {
+        "id": "S014-CZ-Y200-B02",
+        "producedAt": "2026-05-18",
+        "expiresAt": "2026-10-15",
+        "units": 307,
+        "status": "临期",
+        "daysToExpiry": 6,
+        "unit": "盒"
+      }
+    ],
+    "nonNearExpiryBatches": [
+      {
+        "id": "S014-CZ-Y200-B01",
+        "producedAt": "2026-08-07",
+        "expiresAt": "2027-01-04",
+        "units": 142,
+        "status": "正常",
+        "daysToExpiry": 87,
+        "unit": "盒"
+      }
+    ],
+    "expiredBatches": [],
+    "suggestedFirstAction": "核对临期批次标签、到期日与可售状态，确认先到期先出安排，并登记门店允许的处理方式。",
+    "caution": "449 盒仅为 CZ-Y200 同商品可售库存，其中临期 307 盒；不使用门店 726 盒的全部 SKU 库存作分母。临期库存不是已确认损失。"
+  },
+  "s014Batch": {
+    "unit": {
+      "inventory": "盒",
+      "batchCount": "批",
+      "share": "%",
+      "expiry": "YYYY-MM-DD"
+    },
+    "timeWindow": {
+      "asOf": "2026-10-09",
+      "inventoryUpdatedAt": "2026-10-09"
+    },
+    "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "inventory[storeId=S014,skuId=CZ-Y200].batches",
+        "calculation": "仅该 SKU 分批合计；临期为到期日距分析日 0–14 天且数量>0；过期 excludes expiresAt<分析日；临期占比 = 临期数量÷可售库存",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      }
+    ],
+    "storeId": "S014",
+    "storeName": "西校区·示意门店14",
+    "skuId": "CZ-Y200",
+    "skuName": "纯甄常温酸牛奶（示意SKU）",
+    "skuUnit": "盒",
+    "nearExpiryThresholdDays": 14,
+    "totalRecordedUnits": 449,
+    "totalInventoryUnits": 449,
+    "availableUnits": 449,
+    "nearExpiryUnits": 307,
+    "expiredUnits": 0,
+    "normalUnits": 142,
+    "nonNearExpiryAvailableUnits": 142,
+    "nearExpirySharePct": 68.37,
+    "nearExpiryPercent": 68.37,
+    "normalSharePct": 31.63,
+    "quantities": [
+      {
+        "status": "临期",
+        "units": 307,
+        "batchCount": 1
+      },
+      {
+        "status": "正常",
+        "units": 142,
+        "batchCount": 1
+      },
+      {
+        "status": "过期",
+        "units": 0,
+        "batchCount": 0
+      }
+    ],
+    "batches": [
+      {
+        "id": "S014-CZ-Y200-B01",
+        "producedAt": "2026-08-07",
+        "expiresAt": "2027-01-04",
+        "units": 142,
+        "status": "正常",
+        "daysToExpiry": 87,
+        "unit": "盒"
+      },
+      {
+        "id": "S014-CZ-Y200-B02",
+        "producedAt": "2026-05-18",
+        "expiresAt": "2026-10-15",
+        "units": 307,
+        "status": "临期",
+        "daysToExpiry": 6,
+        "unit": "盒"
+      }
+    ],
+    "nearExpiryBatches": [
+      {
+        "id": "S014-CZ-Y200-B02",
+        "producedAt": "2026-05-18",
+        "expiresAt": "2026-10-15",
+        "units": 307,
+        "status": "临期",
+        "daysToExpiry": 6,
+        "unit": "盒"
+      }
+    ],
+    "nonNearExpiryBatches": [
+      {
+        "id": "S014-CZ-Y200-B01",
+        "producedAt": "2026-08-07",
+        "expiresAt": "2027-01-04",
+        "units": 142,
+        "status": "正常",
+        "daysToExpiry": 87,
+        "unit": "盒"
+      }
+    ],
+    "expiredBatches": [],
+    "suggestedFirstAction": "核对临期批次标签、到期日与可售状态，确认先到期先出安排，并登记门店允许的处理方式。",
+    "caution": "449 盒仅为 CZ-Y200 同商品可售库存，其中临期 307 盒；不使用门店 726 盒的全部 SKU 库存作分母。临期库存不是已确认损失。"
+  },
+  "s030Batch": {
+    "unit": {
+      "quantity": "盒",
+      "batchCount": "批",
+      "expiry": "YYYY-MM-DD"
+    },
+    "timeWindow": {
+      "asOf": "2026-10-09",
+      "inventoryUpdatedAt": "2026-10-09"
+    },
+    "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/demo.json",
+        "selector": "inventory[storeId=S030,skuId=TL-C250].batches",
+        "calculation": "过期：expiresAt<分析日；临期：到期日距分析日 0–14 天且数量>0；正常：到期日距分析日>14 天",
+        "engine": "outputs/niudian-zhice/app/engine.mjs",
+        "engineFunction": "analyzeDataset"
+      }
+    ],
+    "storeId": "S030",
+    "storeName": "大学城·示意门店30",
+    "skuId": "TL-C250",
+    "skuName": "特仑苏纯牛奶（示意SKU）",
+    "skuUnit": "盒",
+    "nearExpiryThresholdDays": 14,
+    "quantities": [
+      {
+        "status": "正常",
+        "units": 56,
+        "batchCount": 1
+      },
+      {
+        "status": "临期",
+        "units": 0,
+        "batchCount": 0
+      },
+      {
+        "status": "过期",
+        "units": 24,
+        "batchCount": 1
+      }
+    ],
+    "totalRecordedUnits": 80,
+    "availableUnits": 56,
+    "expiredUnitsExcludedFromAvailable": 24,
+    "batches": [
+      {
+        "id": "S030-TL-C250-B01",
+        "producedAt": "2026-08-13",
+        "expiresAt": "2027-02-09",
+        "units": 56,
+        "status": "正常",
+        "daysToExpiry": 123,
+        "unit": "盒"
+      },
+      {
+        "id": "S030-TL-C250-B00",
+        "producedAt": "2026-04-11",
+        "expiresAt": "2026-10-08",
+        "units": 24,
+        "status": "过期",
+        "daysToExpiry": -1,
+        "unit": "盒"
+      }
+    ],
+    "suggestedFirstAction": "逐批核对实物标签与数量，按门店流程隔离确认过期批次，并登记处理结果。",
+    "caution": "24 盒已过期数量不计入临期或可售库存；数量不是已发生企业损失，不能用售价相乘当作已确认损失。"
+  },
+  "primaryCaseIds": [
+    "S021",
+    "S014",
+    "S006"
+  ],
+  "boundaryCaseIds": [
+    "S030"
+  ],
+  "cases": {
+    "S021": {
+      "unit": {
+        "inventory": "盒",
+        "sales": "盒/日",
+        "cover": "天",
+        "leadTime": "天"
+      },
+      "timeWindow": {
+        "asOf": "2026-10-09",
+        "inventoryUpdatedAt": "2026-10-09",
+        "recentSalesStart": "2026-10-03",
+        "recentSalesEnd": "2026-10-09"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "calculationSources": [
+        {
+          "dataset": "outputs/niudian-zhice/data/demo.json",
+          "selector": "inventory[storeId=S021,skuId=TL-C250].batches",
+          "calculation": "可售库存 = expiresAt≥分析日的批次数量合计；过期库存排除",
+          "engine": "outputs/niudian-zhice/app/engine.mjs",
+          "engineFunction": "analyzeDataset"
+        },
+        {
+          "dataset": "outputs/niudian-zhice/data/demo.json",
+          "selector": "sales[storeId=S021,skuId=TL-C250,date=2026-10-03..2026-10-09]",
+          "calculation": "日均销量 = 最近 7 天销量合计÷7；覆盖天数 = 可售库存÷未四舍五入日均销量",
+          "engine": "outputs/niudian-zhice/app/engine.mjs",
+          "engineFunction": "analyzeDataset"
+        },
+        {
+          "dataset": "outputs/niudian-zhice/data/demo.json",
+          "selector": "stores[id=S021].leadTimeDays",
+          "calculation": "覆盖天数低于门店补货提前期触发 stockout；不是预测未来缺货日期",
+          "engine": "outputs/niudian-zhice/app/engine.mjs",
+          "engineFunction": "analyzeDataset"
+        }
+      ],
+      "storeId": "S021",
+      "storeName": "大学城·示意门店21",
+      "skuId": "TL-C250",
+      "skuName": "特仑苏纯牛奶（示意SKU）",
+      "skuUnit": "盒",
+      "availableUnits": 8,
+      "expiredUnitsExcluded": 0,
+      "recent7SalesUnits": 73,
+      "dailySalesUnits": 10.43,
+      "dailySalesUnitsExact": 10.428571428571429,
+      "coverDays": 0.77,
+      "coverDaysExact": 0.7671232876712328,
+      "leadTimeDays": 3,
+      "gapDays": 2.23,
+      "trigger": "库存覆盖天数 < 补货提前期",
+      "daily": [
+        {
+          "date": "2026-10-03",
+          "units": 10
+        },
+        {
+          "date": "2026-10-04",
+          "units": 11
+        },
+        {
+          "date": "2026-10-05",
+          "units": 11
+        },
+        {
+          "date": "2026-10-06",
+          "units": 10
+        },
+        {
+          "date": "2026-10-07",
+          "units": 11
+        },
+        {
+          "date": "2026-10-08",
+          "units": 11
+        },
+        {
+          "date": "2026-10-09",
+          "units": 9
+        }
+      ],
+      "batches": [
+        {
+          "id": "S021-TL-C250-B01",
+          "producedAt": "2026-06-11",
+          "expiresAt": "2026-12-08",
+          "units": 8
+        }
+      ],
+      "inventoryFresh": true,
+      "salesComplete": true,
+      "noteOriginals": [
+        {
+          "id": "N021",
+          "storeId": "S021",
+          "skuId": "TL-C250",
+          "date": "2026-10-09",
+          "text": "最近一周有多次缺货反馈，在途订单尚未确认。"
+        }
+      ],
+      "suggestedFirstAction": "盘点货架与仓库可售库存，查验在途订单和到货日期，再由业务人员确认补货。",
+      "caution": "0.77 天是存销比计算，非未来需求预测；不输出自动补货量，不把门店全部 SKU 库存混作该 SKU 库存。"
+    },
+    "S014": {
+      "unit": {
+        "inventory": "盒",
+        "batchCount": "批",
+        "share": "%",
+        "expiry": "YYYY-MM-DD"
+      },
+      "timeWindow": {
+        "asOf": "2026-10-09",
+        "inventoryUpdatedAt": "2026-10-09"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "calculationSources": [
+        {
+          "dataset": "outputs/niudian-zhice/data/demo.json",
+          "selector": "inventory[storeId=S014,skuId=CZ-Y200].batches",
+          "calculation": "仅该 SKU 分批合计；临期为到期日距分析日 0–14 天且数量>0；过期 excludes expiresAt<分析日；临期占比 = 临期数量÷可售库存",
+          "engine": "outputs/niudian-zhice/app/engine.mjs",
+          "engineFunction": "analyzeDataset"
+        }
+      ],
+      "storeId": "S014",
+      "storeName": "西校区·示意门店14",
+      "skuId": "CZ-Y200",
+      "skuName": "纯甄常温酸牛奶（示意SKU）",
+      "skuUnit": "盒",
+      "nearExpiryThresholdDays": 14,
+      "totalRecordedUnits": 449,
+      "totalInventoryUnits": 449,
+      "availableUnits": 449,
+      "nearExpiryUnits": 307,
+      "expiredUnits": 0,
+      "normalUnits": 142,
+      "nonNearExpiryAvailableUnits": 142,
+      "nearExpirySharePct": 68.37,
+      "nearExpiryPercent": 68.37,
+      "normalSharePct": 31.63,
+      "quantities": [
+        {
+          "status": "临期",
+          "units": 307,
+          "batchCount": 1
+        },
+        {
+          "status": "正常",
+          "units": 142,
+          "batchCount": 1
+        },
+        {
+          "status": "过期",
+          "units": 0,
+          "batchCount": 0
+        }
+      ],
+      "batches": [
+        {
+          "id": "S014-CZ-Y200-B01",
+          "producedAt": "2026-08-07",
+          "expiresAt": "2027-01-04",
+          "units": 142,
+          "status": "正常",
+          "daysToExpiry": 87,
+          "unit": "盒"
+        },
+        {
+          "id": "S014-CZ-Y200-B02",
+          "producedAt": "2026-05-18",
+          "expiresAt": "2026-10-15",
+          "units": 307,
+          "status": "临期",
+          "daysToExpiry": 6,
+          "unit": "盒"
+        }
+      ],
+      "nearExpiryBatches": [
+        {
+          "id": "S014-CZ-Y200-B02",
+          "producedAt": "2026-05-18",
+          "expiresAt": "2026-10-15",
+          "units": 307,
+          "status": "临期",
+          "daysToExpiry": 6,
+          "unit": "盒"
+        }
+      ],
+      "nonNearExpiryBatches": [
+        {
+          "id": "S014-CZ-Y200-B01",
+          "producedAt": "2026-08-07",
+          "expiresAt": "2027-01-04",
+          "units": 142,
+          "status": "正常",
+          "daysToExpiry": 87,
+          "unit": "盒"
+        }
+      ],
+      "expiredBatches": [],
+      "suggestedFirstAction": "核对临期批次标签、到期日与可售状态，确认先到期先出安排，并登记门店允许的处理方式。",
+      "caution": "449 盒仅为 CZ-Y200 同商品可售库存，其中临期 307 盒；不使用门店 726 盒的全部 SKU 库存作分母。临期库存不是已确认损失。"
+    },
+    "S006": {
+      "unit": "盒/日；均值为盒/日；变化率为 %",
+      "timeWindow": {
+        "start": "2026-09-26",
+        "end": "2026-10-09",
+        "previous7": {
+          "start": "2026-09-26",
+          "end": "2026-10-02"
+        },
+        "recent7": {
+          "start": "2026-10-03",
+          "end": "2026-10-09"
+        }
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "calculationSources": [
+        {
+          "dataset": "outputs/niudian-zhice/data/demo.json",
+          "selector": "sales[storeId=S006,skuId=TL-C250,date=2026-09-26..2026-10-09]",
+          "calculation": "前 7 天与后 7 天分别合计÷7；变化率 = (后 7 天日均÷前 7 天日均−1)×100",
+          "engine": "outputs/niudian-zhice/app/engine.mjs",
+          "engineFunction": "analyzeDataset"
+        },
+        {
+          "dataset": "outputs/niudian-zhice/data/demo.json",
+          "selector": "notes[storeId=S006,skuId=TL-C250]",
+          "calculation": "走访原文仅作待核实线索，不用于直接推断销量下降原因",
+          "engine": "outputs/niudian-zhice/app/engine.mjs",
+          "engineFunction": "analyzeDataset"
+        }
+      ],
+      "storeId": "S006",
+      "storeName": "大学城·示意门店06",
+      "skuId": "TL-C250",
+      "skuName": "特仑苏纯牛奶（示意SKU）",
+      "skuUnit": "盒",
+      "daily": [
+        {
+          "date": "2026-09-26",
+          "units": 18,
+          "period": "前 7 天"
+        },
+        {
+          "date": "2026-09-27",
+          "units": 22,
+          "period": "前 7 天"
+        },
+        {
+          "date": "2026-09-28",
+          "units": 20,
+          "period": "前 7 天"
+        },
+        {
+          "date": "2026-09-29",
+          "units": 17,
+          "period": "前 7 天"
+        },
+        {
+          "date": "2026-09-30",
+          "units": 16,
+          "period": "前 7 天"
+        },
+        {
+          "date": "2026-10-01",
+          "units": 20,
+          "period": "前 7 天"
+        },
+        {
+          "date": "2026-10-02",
+          "units": 19,
+          "period": "前 7 天"
+        },
+        {
+          "date": "2026-10-03",
+          "units": 9,
+          "period": "最近 7 天"
+        },
+        {
+          "date": "2026-10-04",
+          "units": 10,
+          "period": "最近 7 天"
+        },
+        {
+          "date": "2026-10-05",
+          "units": 9,
+          "period": "最近 7 天"
+        },
+        {
+          "date": "2026-10-06",
+          "units": 8,
+          "period": "最近 7 天"
+        },
+        {
+          "date": "2026-10-07",
+          "units": 10,
+          "period": "最近 7 天"
+        },
+        {
+          "date": "2026-10-08",
+          "units": 9,
+          "period": "最近 7 天"
+        },
+        {
+          "date": "2026-10-09",
+          "units": 9,
+          "period": "最近 7 天"
+        }
+      ],
+      "previous7": {
+        "sumUnits": 132,
+        "averageUnitsPerDay": 18.86,
+        "averageUnitsPerDayExact": 18.857142857142858
+      },
+      "recent7": {
+        "sumUnits": 64,
+        "averageUnitsPerDay": 9.14,
+        "averageUnitsPerDayExact": 9.142857142857142
+      },
+      "changePct": -51.52,
+      "declineSignalThresholdPct": -25,
+      "availableStockUnits": 51,
+      "coverDays": 5.58,
+      "leadTimeDays": 3,
+      "noteOriginals": [
+        {
+          "id": "N006",
+          "storeId": "S006",
+          "skuId": "TL-C250",
+          "date": "2026-10-09",
+          "text": "货架缺货，仓库仍有库存。请现场核查货架与仓库实物，先确认是否未上架。",
+          "factLabel": "模拟走访原文，未完成现场核实"
+        }
+      ],
+      "suggestedFirstAction": "分别检查货架与仓库实物，确认是否尚未上架，同时核对价签、活动与销售录入。",
+      "caution": "只可表述“销量下降且走访记录提示货架缺货、仓库有库存”；不能表述“未上架造成下降”或“补货能恢复销量”。"
+    },
+    "S030": {
+      "unit": {
+        "quantity": "盒",
+        "batchCount": "批",
+        "expiry": "YYYY-MM-DD"
+      },
+      "timeWindow": {
+        "asOf": "2026-10-09",
+        "inventoryUpdatedAt": "2026-10-09"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "calculationSources": [
+        {
+          "dataset": "outputs/niudian-zhice/data/demo.json",
+          "selector": "inventory[storeId=S030,skuId=TL-C250].batches",
+          "calculation": "过期：expiresAt<分析日；临期：到期日距分析日 0–14 天且数量>0；正常：到期日距分析日>14 天",
+          "engine": "outputs/niudian-zhice/app/engine.mjs",
+          "engineFunction": "analyzeDataset"
+        }
+      ],
+      "storeId": "S030",
+      "storeName": "大学城·示意门店30",
+      "skuId": "TL-C250",
+      "skuName": "特仑苏纯牛奶（示意SKU）",
+      "skuUnit": "盒",
+      "nearExpiryThresholdDays": 14,
+      "quantities": [
+        {
+          "status": "正常",
+          "units": 56,
+          "batchCount": 1
+        },
+        {
+          "status": "临期",
+          "units": 0,
+          "batchCount": 0
+        },
+        {
+          "status": "过期",
+          "units": 24,
+          "batchCount": 1
+        }
+      ],
+      "totalRecordedUnits": 80,
+      "availableUnits": 56,
+      "expiredUnitsExcludedFromAvailable": 24,
+      "batches": [
+        {
+          "id": "S030-TL-C250-B01",
+          "producedAt": "2026-08-13",
+          "expiresAt": "2027-02-09",
+          "units": 56,
+          "status": "正常",
+          "daysToExpiry": 123,
+          "unit": "盒"
+        },
+        {
+          "id": "S030-TL-C250-B00",
+          "producedAt": "2026-04-11",
+          "expiresAt": "2026-10-08",
+          "units": 24,
+          "status": "过期",
+          "daysToExpiry": -1,
+          "unit": "盒"
+        }
+      ],
+      "suggestedFirstAction": "逐批核对实物标签与数量，按门店流程隔离确认过期批次，并登记处理结果。",
+      "caution": "24 盒已过期数量不计入临期或可售库存；数量不是已发生企业损失，不能用售价相乘当作已确认损失。"
+    }
+  },
+  "existingCases": [
+    {
+      "storeId": "S021",
+      "role": "primary",
+      "theme": "覆盖不足待核查",
+      "dataKey": "cases.S021",
+      "skuId": "TL-C250"
+    },
+    {
+      "storeId": "S014",
+      "role": "primary",
+      "theme": "临期批次待核查",
+      "dataKey": "cases.S014",
+      "skuId": "CZ-Y200"
+    },
+    {
+      "storeId": "S006",
+      "role": "primary",
+      "theme": "陈列线索待核查",
+      "dataKey": "cases.S006",
+      "skuId": "TL-C250"
+    },
+    {
+      "storeId": "S030",
+      "role": "quality-boundary",
+      "theme": "已过期批次排除在可售与临期外",
+      "dataKey": "cases.S030",
+      "skuId": "TL-C250"
+    }
+  ],
+  "economics": {
+    "unit": {
+      "annualMoney": "元/完整运营年",
+      "perStoreMonthMoney": "元/店/月",
+      "contributionRate": "%"
+    },
+    "timeWindow": {
+      "period": "前置 12 周试验之后的首个完整 12 个月运营年，计入全部前置成本",
+      "stores": 100,
+      "operatingMonths": 12,
+      "storeMonths": 1200
+    },
+    "factLabel": "策划情景假设；未开展企业试点，非实际收益、报价或现金流",
+    "calculationSources": [
+      {
+        "dataset": "outputs/niudian-zhice/data/企业价值假设.json",
+        "selector": "scenarios / stores / operatingMonths / netContributionRate / frontloadedCostYuan / annualOperatingCostYuan",
+        "calculation": "净增供货贡献 = 每店月净增公司供货×店数×月份×净贡献率；净减损 = 每店月公司承担净损失减少×店数×月份；完整年净值 = 二者合计−前置成本−年度运行成本"
+      }
+    ],
+    "stores": 100,
+    "operatingMonths": 12,
+    "netContributionRate": 0.2,
+    "netContributionRatePercent": 20,
+    "netSalesDefinition": "公司归因后净增供货，已扣退货、退款、返利；增量生产、促销、配送及退货处理成本通过净贡献率扣除。",
+    "contributionRateLabel": "20% 为模拟假设，非蒙牛公开或实际利润率",
+    "frontloadedCosts": {
+      "dataIntegration": 20000,
+      "workflowAndPermissions": 15000,
+      "trainingEvaluation": 10000,
+      "twelveWeekTrial": 15000
+    },
+    "annualOperatingCosts": {
+      "dataRuleMaintenance": 18000,
+      "hostingSupport": 12000,
+      "modelInternalServiceAllocation": 6000,
+      "reviewTraining": 24000
+    },
+    "scenarios": [
+      {
+        "scenario": "低",
+        "netIncrementalCompanySellInYuanPerStoreMonth": 120,
+        "companyBorneNetLossReductionYuanPerStoreMonth": 5,
+        "contributionYuanPerStoreMonth": 29,
+        "annualNetIncrementalCompanySellInYuan": 144000,
+        "annualContributionFromNetIncrementalSellInYuan": 28800,
+        "annualCompanyBorneNetLossReductionYuan": 6000,
+        "annualOperatingContributionYuan": 34800,
+        "frontloadedCostYuan": 60000,
+        "annualOperatingCostYuan": 60000,
+        "netFirstFullOperatingYearYuan": -85200,
+        "netFollowingYearYuan": -25200,
+        "watermark": "假设测算"
+      },
+      {
+        "scenario": "中",
+        "netIncrementalCompanySellInYuanPerStoreMonth": 360,
+        "companyBorneNetLossReductionYuanPerStoreMonth": 15,
+        "contributionYuanPerStoreMonth": 87,
+        "annualNetIncrementalCompanySellInYuan": 432000,
+        "annualContributionFromNetIncrementalSellInYuan": 86400,
+        "annualCompanyBorneNetLossReductionYuan": 18000,
+        "annualOperatingContributionYuan": 104400,
+        "frontloadedCostYuan": 60000,
+        "annualOperatingCostYuan": 60000,
+        "netFirstFullOperatingYearYuan": -15600,
+        "netFollowingYearYuan": 44400,
+        "watermark": "假设测算"
+      },
+      {
+        "scenario": "高",
+        "netIncrementalCompanySellInYuanPerStoreMonth": 640,
+        "companyBorneNetLossReductionYuanPerStoreMonth": 30,
+        "contributionYuanPerStoreMonth": 158,
+        "annualNetIncrementalCompanySellInYuan": 768000,
+        "annualContributionFromNetIncrementalSellInYuan": 153600,
+        "annualCompanyBorneNetLossReductionYuan": 36000,
+        "annualOperatingContributionYuan": 189600,
+        "frontloadedCostYuan": 60000,
+        "annualOperatingCostYuan": 60000,
+        "netFirstFullOperatingYearYuan": 69600,
+        "netFollowingYearYuan": 129600,
+        "watermark": "假设测算"
+      }
+    ],
+    "breakEven": {
+      "firstFullYearContributionYuanPerStoreMonth": 100,
+      "followingYearContributionYuanPerStoreMonth": 50,
+      "assumedCompanyBorneNetLossReductionYuanPerStoreMonth": 15,
+      "firstFullYearNetSellInThresholdYuanPerStoreMonth": 425,
+      "followingYearNetSellInThresholdYuanPerStoreMonth": 175,
+      "firstFullYearNetSellInThresholdWithoutVerifiedLossReduction": 500,
+      "followingYearNetSellInThresholdWithoutVerifiedLossReduction": 250,
+      "formula": "(60000 元前置 + 60000 元年运行)÷100 店÷12 月 = 100 元/店/月经营贡献"
+    },
+    "excludedFromFinancialValue": [
+      "50 小时/月工时容量假设未计入经营贡献",
+      "未计算应收账款、营运资金、现金收付时间或现金回收期",
+      "未将门店零售增量等同于公司净增供货",
+      "未将门店临期库存货值全部计作公司损失",
+      "未认定前置试点后必然产生财务收益"
+    ],
+    "caution": "低、中情景未覆盖含前置的完整年成本；高情景的正净值仅表明模型条件，不代表已验证可实现。"
+  },
+  "charts": [
+    {
+      "id": "risk-distribution",
+      "title": "30 家演示门店，先把拜访资源排出顺序",
+      "type": "horizontal-stacked-bar",
+      "dataKey": "riskDistribution.levels",
+      "series": [
+        {
+          "label": "高优先级",
+          "value": 2
+        },
+        {
+          "label": "中优先级",
+          "value": 3
+        },
+        {
+          "label": "低优先级",
+          "value": 25
+        }
+      ],
+      "unit": "店",
+      "timeWindow": {
+        "asOf": "2026-10-09",
+        "sales": "2026-09-26—2026-10-09",
+        "inventory": "截至 2026-10-09 的库存快照",
+        "notes": "分析日前 7 天内的有效走访线索"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "sourceKey": "riskDistribution.calculationSources",
+      "caption": "高 2 / 中 3 / 低 25；低优先级中 2 店仍有待核查信号。"
+    },
+    {
+      "id": "today-top5",
+      "title": "有限的 5 个名额，先核查谁",
+      "type": "horizontal-bar",
+      "dataKey": "top5.items",
+      "series": [
+        {
+          "label": "S030",
+          "value": 70,
+          "reason": "过期批次待隔离",
+          "action": "核查并隔离过期批次"
+        },
+        {
+          "label": "S021",
+          "value": 64,
+          "reason": "库存覆盖不足 / 销量下降待核查 / 临期批次待处理",
+          "action": "核对可售库存与在途订单"
+        },
+        {
+          "label": "S006",
+          "value": 50,
+          "reason": "销量下降待核查 / 陈列与仓库待核查",
+          "action": "先检查上架与仓库实物"
+        },
+        {
+          "label": "S028",
+          "value": 40,
+          "reason": "销量下降待核查 / 走访信息冲突",
+          "action": "复核相互冲突的信息"
+        },
+        {
+          "label": "S014",
+          "value": 34,
+          "reason": "临期批次待处理",
+          "action": "优先核查临期批次"
+        }
+      ],
+      "unit": "规则优先分 /100",
+      "timeWindow": {
+        "asOf": "2026-10-09"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "sourceKey": "top5.calculationSources",
+      "caption": "分数用于排序；不表示模型准确率、发生概率或企业收益。"
+    },
+    {
+      "id": "s006-sales",
+      "title": "S006：销量下降，下一步要检查上架线索",
+      "type": "daily-column-with-period-mean-lines",
+      "dataKey": "s006Sales.daily",
+      "series": [
+        {
+          "label": "2026-09-26",
+          "value": 18,
+          "period": "前 7 天"
+        },
+        {
+          "label": "2026-09-27",
+          "value": 22,
+          "period": "前 7 天"
+        },
+        {
+          "label": "2026-09-28",
+          "value": 20,
+          "period": "前 7 天"
+        },
+        {
+          "label": "2026-09-29",
+          "value": 17,
+          "period": "前 7 天"
+        },
+        {
+          "label": "2026-09-30",
+          "value": 16,
+          "period": "前 7 天"
+        },
+        {
+          "label": "2026-10-01",
+          "value": 20,
+          "period": "前 7 天"
+        },
+        {
+          "label": "2026-10-02",
+          "value": 19,
+          "period": "前 7 天"
+        },
+        {
+          "label": "2026-10-03",
+          "value": 9,
+          "period": "最近 7 天"
+        },
+        {
+          "label": "2026-10-04",
+          "value": 10,
+          "period": "最近 7 天"
+        },
+        {
+          "label": "2026-10-05",
+          "value": 9,
+          "period": "最近 7 天"
+        },
+        {
+          "label": "2026-10-06",
+          "value": 8,
+          "period": "最近 7 天"
+        },
+        {
+          "label": "2026-10-07",
+          "value": 10,
+          "period": "最近 7 天"
+        },
+        {
+          "label": "2026-10-08",
+          "value": 9,
+          "period": "最近 7 天"
+        },
+        {
+          "label": "2026-10-09",
+          "value": 9,
+          "period": "最近 7 天"
+        }
+      ],
+      "referenceLines": [
+        {
+          "label": "前 7 天日均",
+          "value": 18.86,
+          "start": "2026-09-26",
+          "end": "2026-10-02"
+        },
+        {
+          "label": "最近 7 天日均",
+          "value": 9.14,
+          "start": "2026-10-03",
+          "end": "2026-10-09"
+        }
+      ],
+      "unit": "盒/日",
+      "timeWindow": {
+        "start": "2026-09-26",
+        "end": "2026-10-09",
+        "previous7": {
+          "start": "2026-09-26",
+          "end": "2026-10-02"
+        },
+        "recent7": {
+          "start": "2026-10-03",
+          "end": "2026-10-09"
+        }
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "sourceKey": "s006Sales.calculationSources",
+      "caption": "18.86 → 9.14 盒/日，变化 -51.52%；不能据此直接认定原因。"
+    },
+    {
+      "id": "s021-cover",
+      "title": "S021：覆盖天数小于补货提前期",
+      "type": "bullet-chart",
+      "dataKey": "s021Stock",
+      "series": [
+        {
+          "label": "库存覆盖",
+          "value": 0.77
+        },
+        {
+          "label": "补货提前期",
+          "value": 3
+        }
+      ],
+      "unit": "天",
+      "timeWindow": {
+        "asOf": "2026-10-09",
+        "inventoryUpdatedAt": "2026-10-09",
+        "recentSalesStart": "2026-10-03",
+        "recentSalesEnd": "2026-10-09"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "sourceKey": "s021Stock.calculationSources",
+      "caption": "8 盒÷10.43 盒/日≈0.77 天；先盘点并查在途，再确认补货。"
+    },
+    {
+      "id": "s014-near-expiry",
+      "title": "S014：同一商品，307 盒优先核查批次",
+      "type": "stacked-inventory-bar-with-batch-dates",
+      "dataKey": "s014Batch.quantities",
+      "series": [
+        {
+          "label": "临期",
+          "value": 307,
+          "expiresAt": "2026-10-15",
+          "sharePct": 68.37
+        },
+        {
+          "label": "非临期",
+          "value": 142,
+          "expiresAt": "2027-01-04",
+          "sharePct": 31.63
+        }
+      ],
+      "unit": "盒",
+      "timeWindow": {
+        "asOf": "2026-10-09",
+        "inventoryUpdatedAt": "2026-10-09"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "sourceKey": "s014Batch.calculationSources",
+      "caption": "CZ-Y200 同商品库存 449 盒；307 盒将于 2026-10-15 到期，占 68.37%；另 142 盒到期 2027-01-04；过期 0 盒。"
+    },
+    {
+      "id": "s030-batches",
+      "title": "S030：正常、临期、过期要分别处理",
+      "type": "stacked-inventory-bar-with-batch-dates",
+      "dataKey": "s030Batch.quantities",
+      "series": [
+        {
+          "label": "正常",
+          "value": 56,
+          "batchCount": 1
+        },
+        {
+          "label": "临期",
+          "value": 0,
+          "batchCount": 0
+        },
+        {
+          "label": "过期",
+          "value": 24,
+          "batchCount": 1
+        }
+      ],
+      "unit": "盒",
+      "timeWindow": {
+        "asOf": "2026-10-09",
+        "inventoryUpdatedAt": "2026-10-09"
+      },
+      "factLabel": "固定种子合成模拟数据；不是蒙牛或真实门店经营数据",
+      "sourceKey": "s030Batch.calculationSources",
+      "caption": "正常 56 盒；临期 0 盒；过期 24 盒。24 盒到期于 2026-10-08，排除在可售库存外。"
+    },
+    {
+      "id": "scenario-contribution",
+      "title": "经营贡献能否覆盖 12 万元投入",
+      "type": "stacked-column-with-cost-threshold",
+      "dataKey": "economics.scenarios",
+      "series": [
+        {
+          "label": "低",
+          "netSellInContribution": 28800,
+          "companyLossReduction": 6000,
+          "netValue": -85200
+        },
+        {
+          "label": "中",
+          "netSellInContribution": 86400,
+          "companyLossReduction": 18000,
+          "netValue": -15600
+        },
+        {
+          "label": "高",
+          "netSellInContribution": 153600,
+          "companyLossReduction": 36000,
+          "netValue": 69600
+        }
+      ],
+      "referenceLines": [
+        {
+          "label": "含前置完整年投入",
+          "value": 120000
+        }
+      ],
+      "unit": "元/完整运营年",
+      "displayUnit": "万元/完整运营年",
+      "displayDivisor": 10000,
+      "timeWindow": {
+        "period": "前置 12 周试验之后的首个完整 12 个月运营年，计入全部前置成本",
+        "stores": 100,
+        "operatingMonths": 12,
+        "storeMonths": 1200
+      },
+      "factLabel": "策划情景假设；未开展企业试点，非实际收益、报价或现金流",
+      "sourceKey": "economics.calculationSources",
+      "caption": "低、中、高净值分别为 −8.52、−1.56、+6.96 万元；仅为条件假设。"
+    },
+    {
+      "id": "mid-scenario-waterfall",
+      "title": "中情景：贡献 10.44 万元，仍不足覆盖首年投入",
+      "type": "waterfall",
+      "dataKey": "economics.scenarios[scenario=中]",
+      "series": [
+        {
+          "label": "净增供货贡献",
+          "value": 86400
+        },
+        {
+          "label": "公司承担净减损",
+          "value": 18000
+        },
+        {
+          "label": "前置成本",
+          "value": -60000
+        },
+        {
+          "label": "运行成本",
+          "value": -60000
+        },
+        {
+          "label": "完整年净值",
+          "value": -15600,
+          "isTotal": true
+        }
+      ],
+      "unit": "元/完整运营年",
+      "displayUnit": "万元/完整运营年",
+      "displayDivisor": 10000,
+      "timeWindow": {
+        "period": "前置 12 周试验之后的首个完整 12 个月运营年，计入全部前置成本",
+        "stores": 100,
+        "operatingMonths": 12,
+        "storeMonths": 1200
+      },
+      "factLabel": "策划情景假设；未开展企业试点，非实际收益、报价或现金流",
+      "sourceKey": "economics.calculationSources",
+      "caption": "8.64 + 1.80 − 6.00 − 6.00 = −1.56 万元，财务门槛应进入试点验收。"
+    }
+  ],
+  "validation": {
+    "engineValuesMatch": true,
+    "all30CountMatch": true,
+    "allFinancialScenariosMatchExistingAssumptions": true,
+    "expiredExcludedFromNearExpiryAndAvailable": true,
+    "quantitiesNotAddedAcrossSkuUnits": true
+  }
+}
